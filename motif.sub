@@ -1,0 +1,18 @@
+universe = vanilla
+
+log = /home/mzheng54/motif/log/job_$(Cluster)_$(Process).log
+error = /home/mzheng54/motif/log/job_$(Cluster)_$(Process).err
+output = /home/mzheng54/motif/log/job_$(Cluster)_$(Process).out
+
+executable = motif.sh
+arguments = $(a) $(b)
+
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/python38.tar.gz,/home/mzheng54/packages.tar.gz,motif.py,para_motif_comp.txt
+
+request_cpus = 1
+request_memory = 1GB
+request_disk = 1GB
+#ntrial = 12
+queue 1 a,b from para_motif_comp.txt

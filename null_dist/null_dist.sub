@@ -1,0 +1,17 @@
+universe = vanilla
+
+log = /home/mzheng54/net_representation/null_dist/log/job_$(Cluster)_$(Process).log
+error = /home/mzheng54/net_representation/null_dist/log/job_$(Cluster)_$(Process).err
+output = /home/mzheng54/net_representation/null_dist/log/job_$(Cluster)_$(Process).out
+
+executable = null_dist.sh
+arguments = $(a) $(b) $(c)
+
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/python38.tar.gz,/home/mzheng54/packages.tar.gz,null_dist.py,null_dist.sh
+
+request_cpus = 1
+request_memory = 1GB
+request_disk = 1GB
+queue 1 a,b,c from para.txt

@@ -1,0 +1,17 @@
+universe = vanilla
+
+log = /home/mzheng54/net_representation/real_data/log/job_$(Cluster)_$(Process).log
+error = /home/mzheng54/net_representation/real_data/log/job_$(Cluster)_$(Process).err
+output = /home/mzheng54/net_representation/real_data/log/job_$(Cluster)_$(Process).out
+
+executable = motif.sh
+arguments = $(a) $(b)
+
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/python38.tar.gz,/home/mzheng54/packages.tar.gz,real_data.py,twitch_egos.zip,reddit_threads.zip,motif.sh
+
+request_cpus = 1
+request_memory = 2GB
+request_disk = 4GB
+queue 1 a,b from para.txt
